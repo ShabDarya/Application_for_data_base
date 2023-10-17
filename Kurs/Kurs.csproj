@@ -1,0 +1,1101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BBD8755E-0A4F-4729-B789-01F03CE93B4E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Kurs</RootNamespace>
+    <AssemblyName>Kurs</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.14.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Protobuf.3.14.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.Streams.1.1.11\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.25.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.25\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlConnector, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
+      <HintPath>packages\MySqlConnector.1.3.9\lib\net471\MySqlConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.25\lib\net452\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.25\lib\net452\Zstandard.Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="bd.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Glava.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Glava.Designer.cs">
+      <DependentUpon>Glava.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Jurn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jurn.Designer.cs">
+      <DependentUpon>Jurn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Klad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Klad.Designer.cs">
+      <DependentUpon>Klad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KladAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KladAdd.Designer.cs">
+      <DependentUpon>KladAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet.cs">
+      <DependentUpon>kyrsovayaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet12.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet13.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet13.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet14.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet14.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet15.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet15.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet16.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet16.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet17.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet17.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet18.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet18.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet19.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet19.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet20.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet20.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet21.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet21.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet22.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet22.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet23.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet23.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet24.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet24.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet25.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet25.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet26.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet26.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet27.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet27.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet28.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet28.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet29.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet29.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet30.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet30.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet31.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet31.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet32.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet32.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet33.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet33.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet34.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet34.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet35.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet35.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet36.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet36.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet37.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet37.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet38.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet38.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet39.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet39.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet40.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet40.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet41.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet41.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet42.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet42.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet43.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet43.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet44.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet44.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet45.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet45.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet46.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet46.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet47.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet47.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaDataSet9.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kyrsovayaNP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kyrsovayaNP.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Look.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Look.Designer.cs">
+      <DependentUpon>Look.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mened.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mened.Designer.cs">
+      <DependentUpon>Mened.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenedR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenedR.Designer.cs">
+      <DependentUpon>MenedR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenedReal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenedReal.Designer.cs">
+      <DependentUpon>MenedReal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenedZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenedZ.Designer.cs">
+      <DependentUpon>MenedZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenedZak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenedZak.Designer.cs">
+      <DependentUpon>MenedZak.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NP.Designer.cs">
+      <DependentUpon>NP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PZ.Designer.cs">
+      <DependentUpon>PZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RC.Designer.cs">
+      <DependentUpon>RC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SostavSpec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SostavSpec.Designer.cs">
+      <DependentUpon>SostavSpec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SostavTK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SostavTK.Designer.cs">
+      <DependentUpon>SostavTK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Specif.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Specif.Designer.cs">
+      <DependentUpon>Specif.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tech.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tech.Designer.cs">
+      <DependentUpon>Tech.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TK.Designer.cs">
+      <DependentUpon>TK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VihodGP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VihodGP.Designer.cs">
+      <DependentUpon>VihodGP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vipoln.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vipoln.Designer.cs">
+      <DependentUpon>Vipoln.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Glava.resx">
+      <DependentUpon>Glava.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jurn.resx">
+      <DependentUpon>Jurn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Klad.resx">
+      <DependentUpon>Klad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KladAdd.resx">
+      <DependentUpon>KladAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Look.resx">
+      <DependentUpon>Look.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mened.resx">
+      <DependentUpon>Mened.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenedR.resx">
+      <DependentUpon>MenedR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenedReal.resx">
+      <DependentUpon>MenedReal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenedZ.resx">
+      <DependentUpon>MenedZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenedZak.resx">
+      <DependentUpon>MenedZak.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NP.resx">
+      <DependentUpon>NP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="PZ.resx">
+      <DependentUpon>PZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RC.resx">
+      <DependentUpon>RC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SostavSpec.resx">
+      <DependentUpon>SostavSpec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SostavTK.resx">
+      <DependentUpon>SostavTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specif.resx">
+      <DependentUpon>Specif.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tech.resx">
+      <DependentUpon>Tech.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TK.resx">
+      <DependentUpon>TK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VihodGP.resx">
+      <DependentUpon>VihodGP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vipoln.resx">
+      <DependentUpon>Vipoln.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="kyrsovayaDataSet.xsc">
+      <DependentUpon>kyrsovayaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet.xss">
+      <DependentUpon>kyrsovayaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet1.xsc">
+      <DependentUpon>kyrsovayaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet1.xss">
+      <DependentUpon>kyrsovayaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet10.xsc">
+      <DependentUpon>kyrsovayaDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet10.xss">
+      <DependentUpon>kyrsovayaDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet11.xsc">
+      <DependentUpon>kyrsovayaDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet11.xss">
+      <DependentUpon>kyrsovayaDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet12.xsc">
+      <DependentUpon>kyrsovayaDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet12.xss">
+      <DependentUpon>kyrsovayaDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet13.xsc">
+      <DependentUpon>kyrsovayaDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet13.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet13.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet13.xss">
+      <DependentUpon>kyrsovayaDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet14.xsc">
+      <DependentUpon>kyrsovayaDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet14.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet14.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet14.xss">
+      <DependentUpon>kyrsovayaDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet15.xsc">
+      <DependentUpon>kyrsovayaDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet15.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet15.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet15.xss">
+      <DependentUpon>kyrsovayaDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet16.xsc">
+      <DependentUpon>kyrsovayaDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet16.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet16.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet16.xss">
+      <DependentUpon>kyrsovayaDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet17.xsc">
+      <DependentUpon>kyrsovayaDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet17.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet17.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet17.xss">
+      <DependentUpon>kyrsovayaDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet18.xsc">
+      <DependentUpon>kyrsovayaDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet18.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet18.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet18.xss">
+      <DependentUpon>kyrsovayaDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet19.xsc">
+      <DependentUpon>kyrsovayaDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet19.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet19.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet19.xss">
+      <DependentUpon>kyrsovayaDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet2.xsc">
+      <DependentUpon>kyrsovayaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet2.xss">
+      <DependentUpon>kyrsovayaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet20.xsc">
+      <DependentUpon>kyrsovayaDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet20.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet20.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet20.xss">
+      <DependentUpon>kyrsovayaDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet21.xsc">
+      <DependentUpon>kyrsovayaDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet21.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet21.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet21.xss">
+      <DependentUpon>kyrsovayaDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet22.xsc">
+      <DependentUpon>kyrsovayaDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet22.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet22.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet22.xss">
+      <DependentUpon>kyrsovayaDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet23.xsc">
+      <DependentUpon>kyrsovayaDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet23.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet23.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet23.xss">
+      <DependentUpon>kyrsovayaDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet24.xsc">
+      <DependentUpon>kyrsovayaDataSet24.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet24.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet24.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet24.xss">
+      <DependentUpon>kyrsovayaDataSet24.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet25.xsc">
+      <DependentUpon>kyrsovayaDataSet25.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet25.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet25.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet25.xss">
+      <DependentUpon>kyrsovayaDataSet25.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet26.xsc">
+      <DependentUpon>kyrsovayaDataSet26.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet26.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet26.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet26.xss">
+      <DependentUpon>kyrsovayaDataSet26.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet27.xsc">
+      <DependentUpon>kyrsovayaDataSet27.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet27.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet27.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet27.xss">
+      <DependentUpon>kyrsovayaDataSet27.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet28.xsc">
+      <DependentUpon>kyrsovayaDataSet28.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet28.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet28.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet28.xss">
+      <DependentUpon>kyrsovayaDataSet28.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet29.xsc">
+      <DependentUpon>kyrsovayaDataSet29.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet29.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet29.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet29.xss">
+      <DependentUpon>kyrsovayaDataSet29.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet3.xsc">
+      <DependentUpon>kyrsovayaDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet3.xss">
+      <DependentUpon>kyrsovayaDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet30.xsc">
+      <DependentUpon>kyrsovayaDataSet30.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet30.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet30.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet30.xss">
+      <DependentUpon>kyrsovayaDataSet30.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet31.xsc">
+      <DependentUpon>kyrsovayaDataSet31.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet31.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet31.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet31.xss">
+      <DependentUpon>kyrsovayaDataSet31.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet32.xsc">
+      <DependentUpon>kyrsovayaDataSet32.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet32.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet32.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet32.xss">
+      <DependentUpon>kyrsovayaDataSet32.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet33.xsc">
+      <DependentUpon>kyrsovayaDataSet33.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet33.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet33.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet33.xss">
+      <DependentUpon>kyrsovayaDataSet33.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet34.xsc">
+      <DependentUpon>kyrsovayaDataSet34.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet34.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet34.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet34.xss">
+      <DependentUpon>kyrsovayaDataSet34.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet35.xsc">
+      <DependentUpon>kyrsovayaDataSet35.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet35.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet35.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet35.xss">
+      <DependentUpon>kyrsovayaDataSet35.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet36.xsc">
+      <DependentUpon>kyrsovayaDataSet36.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet36.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet36.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet36.xss">
+      <DependentUpon>kyrsovayaDataSet36.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet37.xsc">
+      <DependentUpon>kyrsovayaDataSet37.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet37.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet37.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet37.xss">
+      <DependentUpon>kyrsovayaDataSet37.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet38.xsc">
+      <DependentUpon>kyrsovayaDataSet38.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet38.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet38.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet38.xss">
+      <DependentUpon>kyrsovayaDataSet38.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet39.xsc">
+      <DependentUpon>kyrsovayaDataSet39.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet39.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet39.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet39.xss">
+      <DependentUpon>kyrsovayaDataSet39.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet4.xsc">
+      <DependentUpon>kyrsovayaDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet4.xss">
+      <DependentUpon>kyrsovayaDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet40.xsc">
+      <DependentUpon>kyrsovayaDataSet40.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet40.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet40.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet40.xss">
+      <DependentUpon>kyrsovayaDataSet40.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet41.xsc">
+      <DependentUpon>kyrsovayaDataSet41.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet41.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet41.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet41.xss">
+      <DependentUpon>kyrsovayaDataSet41.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet42.xsc">
+      <DependentUpon>kyrsovayaDataSet42.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet42.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet42.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet42.xss">
+      <DependentUpon>kyrsovayaDataSet42.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet43.xsc">
+      <DependentUpon>kyrsovayaDataSet43.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet43.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet43.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet43.xss">
+      <DependentUpon>kyrsovayaDataSet43.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet44.xsc">
+      <DependentUpon>kyrsovayaDataSet44.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet44.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet44.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet44.xss">
+      <DependentUpon>kyrsovayaDataSet44.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet45.xsc">
+      <DependentUpon>kyrsovayaDataSet45.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet45.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet45.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet45.xss">
+      <DependentUpon>kyrsovayaDataSet45.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet46.xsc">
+      <DependentUpon>kyrsovayaDataSet46.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet46.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet46.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet46.xss">
+      <DependentUpon>kyrsovayaDataSet46.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet47.xsc">
+      <DependentUpon>kyrsovayaDataSet47.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet47.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet47.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet47.xss">
+      <DependentUpon>kyrsovayaDataSet47.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet5.xsc">
+      <DependentUpon>kyrsovayaDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet5.xss">
+      <DependentUpon>kyrsovayaDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet6.xsc">
+      <DependentUpon>kyrsovayaDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet6.xss">
+      <DependentUpon>kyrsovayaDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet7.xsc">
+      <DependentUpon>kyrsovayaDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet7.xss">
+      <DependentUpon>kyrsovayaDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet8.xsc">
+      <DependentUpon>kyrsovayaDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet8.xss">
+      <DependentUpon>kyrsovayaDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet9.xsc">
+      <DependentUpon>kyrsovayaDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaDataSet9.xss">
+      <DependentUpon>kyrsovayaDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaNP.xsc">
+      <DependentUpon>kyrsovayaNP.xsd</DependentUpon>
+    </None>
+    <None Include="kyrsovayaNP.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kyrsovayaNP.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kyrsovayaNP.xss">
+      <DependentUpon>kyrsovayaNP.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
